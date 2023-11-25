@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Formula</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>symbol</th>
+            <th>P/E Ratio</th>
+            <th>ROA</th>
+            <th>Rank</th>
+        </tr>
+        {% for symbol, value in data.items() %}
+            <tr>
+                <td>{{symbol.upper()}}</td>
+                <td>{{value["P/E Ratio"]}}</td>
+                <td>{{value["ROA"]}}</td>
+                <td>{{value["Magic Formula Rank"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
