@@ -5,7 +5,7 @@ import MagicFormula
 app = Flask(__name__)
 
 route = {
-    'open-ipo': '/open-ipo',
+    'open-ipo': '/openipo',
     'magic-formula': '/magicformula'
 }
 
@@ -19,7 +19,8 @@ def helloFriend():
 
 @app.route(route['open-ipo'])
 def openIpo():
-    return jsonify({'ipo': list(webScraping.openIPO())})
+    data = webScraping.openIPO()
+    return render_template("openipo.html", ipo=data)
 
 @app.route(route['magic-formula'], methods=['GET', 'POST'])
 def magicFormulaForm():
@@ -42,6 +43,7 @@ def magicFormulaForm():
         print(companies)
         data = MagicFormula.dataExtraction(companies)
         return render_template("magictable.html", data=data)
+        #return data
     elif request.method == 'GET':
         return render_template("magicform.html")
     

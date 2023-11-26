@@ -4,23 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Formula</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='scripts.js')}}"></script>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>symbol</th>
-            <th>P/E Ratio</th>
-            <th>ROA</th>
-            <th>Rank</th>
-        </tr>
-        {% for symbol, value in data.items() %}
+    <nav>
+        <a href="/magicformula">Magic Formula</a>
+        <a href="/openipo">Open IPO</a>
+        
+    </nav>
+    <div>
+        <table border="1">
             <tr>
-                <td>{{symbol.upper()}}</td>
+                <th>symbol</th>
+                <th>P/E Ratio</th>
+                <th>ROA</th>
+                <th>Rank</th>
+            </tr>
+            {% for symbol, value in data.items() %}
+                <tr>
+                    <td>{{symbol.upper()}}</td>
+                    <td>{{value["P/E Ratio"]}}</td>
+                    <td>{{value["ROA"]}}</td>
+                    <td>{{value["Magic Formula Rank"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>symbol</th>
+                <th>Company Name</th>
+                <th>Sector</th>
+                <th>Market Price</th>
+                <th>EPS</th>
+                <th>P/E</th>
+                <th>ROA</th>
+                <th>Book Value</th>
+                <th>PBV</th>
+            </tr>
+            {% for symbol, value in data.items() %}
+            <tr>
+                <td>{{symbol}}</td>
+                <td>{{value["companyName"]}}</td>
+                <td>{{value["sector"]}}</td>
+                <td>{{value["marketPrice"]}}</td>
+                <td>{{value["EPS"]}}</td>
                 <td>{{value["P/E Ratio"]}}</td>
                 <td>{{value["ROA"]}}</td>
-                <td>{{value["Magic Formula Rank"]}}</td>
+                <td>{{value["bookValue"]}}</td>
+                <td>{{value["PBV"]}}</td>
             </tr>
-        {% endfor %}
-    </table>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>

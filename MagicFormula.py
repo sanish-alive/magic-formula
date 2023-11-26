@@ -111,9 +111,9 @@ def magicFormula(companies):
             "marketPrice": float(companies[symbol]["Market Price"]),
             "bookValue": float(companies[symbol]["Book Value"]),
             "PBV": float(companies[symbol]["PBV"]),
-            "EPS": float(earningsPerShares),
-            "P/E Ratio": float(PERatio),
-            "ROA": float(returnOnAsset)
+            "EPS": round(earningsPerShares, 2),
+            "P/E Ratio": round(PERatio, 2),
+            "ROA": round(returnOnAsset, 2)
         }
 
     sortedPERatio = sorted(magic.items(), key=lambda x: x[1]["P/E Ratio"])
