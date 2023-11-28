@@ -1,6 +1,8 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: #2b3035;
 }
 
 nav {
@@ -20,4 +22,59 @@ nav a {
 nav a:hover {
     background-color: #ddd;
     color: black;
+}
+
+.table-container {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mytable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    background-color: #343a40;
+    color: white;
+}
+
+.mytable th tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.mytable th,
+.mytable td {
+    padding: 12px 15px;
+}
+
+.mytable tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.mytable input {
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.mytable td select {
+    padding: 5px;
+    border-radius: 7px;
+}
+
+button {
+    padding: 10px;
+    height: 40px;
+    width: 80px;
+    color: white;
+    background-color: #343a40;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: gray;
 }
