@@ -24,10 +24,9 @@
                 <td>
                     <select name="symbol" onchange="updateName(this)">
                         <option selected>select</option>
-                        <option value="nifra">NIFRA</option>
-                        <option value="nabil">NABIL</option>
-                        <option value="pli">PLI</option>
-                        <option value="nica">NICA</option>
+                        {%for symbol in stock %}
+                        <option value="{{symbol}}">{{symbol}}</option>
+                        {% endfor %}
                     </select>
                 </td>
                 <td>
