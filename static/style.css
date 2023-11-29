@@ -8,6 +8,7 @@ body {
 nav {
     background-color: #333;
     overflow: hidden;
+    width: 100%;
 }
 
 nav a {
@@ -47,6 +48,9 @@ nav a:hover {
     text-align: left;
 }
 
+.mytable th {
+    color: gray;
+}
 .mytable th,
 .mytable td {
     padding: 12px 15px;
@@ -77,4 +81,10 @@ button {
 
 button:hover {
     background-color: gray;
+}
+
+@media screen and (max-width: 1110px) {
+    .table-container {
+        margin-top: 55px;
+    }
 }

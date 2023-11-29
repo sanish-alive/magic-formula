@@ -13,13 +13,29 @@
         <a href="/openipo">Open IPO</a>
         
     </nav>
-    <h2>Open IPO</h2>
     {% if ipo %}
-    <ol>
-        {% for symbol in ipo %}
-        <li><b>{{symbol}}</b></li>
-        {% endfor %}
-    </ol>
+
+    <div class="table-container">
+        <center><h2>Open IPO</h2></center>
+        <table class="mytable">
+            <tr>
+                <th>symbol</th>
+                <th>Company Name</th>
+                <th>Open Date</th>
+                <th>Close Date</th>
+                <th>Detail</th>
+            </tr>
+            {% for value in ipo %}
+                <tr>
+                    <td>{{value["company"].upper()}}</td>
+                    <td>{{value["title"]}}</td>
+                    <td>{{value["open_date"]}}</td>
+                    <td>{{value["close_date"]}}</td>
+                    <td>{{value["detail"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
     {% else %}
      <h3>None</h3>
     {% endif %}

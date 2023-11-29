@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, redirect, request, render_template
 import webScraping
 import MagicFormula
 
@@ -15,7 +15,7 @@ def notFound(e):
 
 @app.route("/")
 def helloFriend():
-    return jsonify({'hello': 'friend'})
+    return redirect(route["magic-formula"])
 
 @app.route(route['open-ipo'])
 def openIpo():

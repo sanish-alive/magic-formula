@@ -1,92 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-
-stock = {
-    "nifra": {
-        "netIncome": 234234234234,
-        "Company Name": "Nepal Infrastructure Bank Limited (NIFRA)",
-        "Sector": "Investment",
-        "Shares Outstanding": 216_000_000,
-        "Market Price": 187.00,
-        "EPS": "7.66 (FY:080-081, Q:1)",
-        "P/E Ratio": 24.41,
-        "Book Value": 112.02,
-        "PBV": 1.67,
-        "Asset": 57868768
-    },
-    "nabil": {
-        "netIncome": 234234,
-        "Company Name": "Nabil Bank Limited (NABIL)",
-        "Sector": "Commercial Banks",
-        "Shares Outstanding": 270_569_970.00,
-        "Market Price": 14.00,
-        "EPS": "21.72 (FY:080-081, Q:1)",
-        "P/E Ratio": 23.66,
-        "Book Value": 218.27,
-        "PBV": 2.35,
-        "Asset": 87686546
-    },
-    "pli": {
-        "netIncome": 3424,
-        "Company Name": "Prabhu Life Insurance Limited (PLI)",
-        "Sector": "Life Insurance",
-        "Shares Outstanding": 21_960_000.00,
-        "Market Price": 587.00,
-        "EPS": "0.00 (FY:079-080, Q:3)",
-        "P/E Ratio": 0.00,
-        "Book Value": "127.20",
-        "PBV": 4.61,
-        "Asset": 79870989
-    },
-    "nica": {
-        "netIncome": 234324,
-        "Company Name": "NIC Asia Bank Ltd. (NICA)",
-        "Sector": "Commercial Banks",
-        "Shares Outstanding": 149_175_669.20,
-        "Market Price": 503.00,
-        "EPS": "27.09 (FY:080-081, Q:1)",
-        "P/E Ratio": 18.57,
-        "Book Value": 202.05,
-        "PBV": "2.49",
-        "Asset": 6576576765
-    },
-}
-
-def companyDataExtraction(symbol):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
-    }
-    url = 'https://merolagani.com/CompanyDetail.aspx?symbol='+symbol.lower()
-    request = requests.get(url, headers=headers)
-    soup = BeautifulSoup(request.content, 'html.parser')
-
-    company_name = soup.find('span', {'id': 'ctl00_ContentPlaceHolder1_CompanyDetail1_companyName'}).text.strip()
-    data = {}
-    data['Company Name'] = company_name
-    headers_to_extract = ["Market Price", "P/E Ratio", "EPS", "Book Value", "PBV", "Shares Outstanding", "Sector"]
-
-    table = soup.find('table', {'id': 'accordion'})
-    
-    rows = table.find_all('tr')
-
-    for row in rows:
-        th = row.find('th')
-        td = row.find('td')
-        if th and td:
-            header_text = th.text.strip()
-            value = td.text.strip()
-            value = re.sub(r'\s+', ' ', value).strip()
-            if header_text in headers_to_extract:
-                data[header_text] = value
-    
-    return data
+import webScraping
 
 def dataExtraction(companies):
 
     for symbol in companies.keys():
         
-        company_data = companyDataExtraction(symbol)
+        company_data = webScraping.companyDataExtraction(symbol)
         companies[symbol].update(company_data)
 
     return magicFormula(companies)
