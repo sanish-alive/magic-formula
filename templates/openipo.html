@@ -9,13 +9,14 @@
 </head>
 <body>
     <nav>
-        <a href="/magic-formula">Magic Formula</a>
-        <a href="/open-ipo">Open IPO</a>
+        <a href="{{url_for('magicFormulaForm')}}">Magic Formula</a>
+        <a href="{{url_for('openIpo')}}">Open IPO</a>
         
     </nav>
-    {% if ipo %}
+    
 
     <div class="table-container">
+        {% if ipo %}
         <center><h2>Open IPO</h2></center>
         <table class="mytable">
             <tr>
@@ -35,10 +36,13 @@
                 </tr>
             {% endfor %}
         </table>
+        {% else %}
+        <div class="no-data-message">
+            <h3>No IPOs available at the moment.</h3>
+            <p>Please check back later for updates.</p>
+        </div>
+        {% endif %}
     </div>
-    {% else %}
-     <h3>None</h3>
-    {% endif %}
 
     <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 </body>

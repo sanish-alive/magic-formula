@@ -9,12 +9,12 @@
 </head>
 <body>
     <nav>
-        <a href="/magic-formula">Magic Formula</a>
-        <a href="/open-ipo">Open IPO</a>
+        <a href="{{url_for('magicFormulaForm')}}">Magic Formula</a>
+        <a href="{{url_for('openIpo')}}">Open IPO</a>
         
     </nav>
     <div class="table-container">
-    <form action="/magic-formula" method="post">
+    <form action="{{url_for('magicFormulaForm')}}" method="post">
         <table class="mytable">
             <tr>
                 <th>Company</th>
