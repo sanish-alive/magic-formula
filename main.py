@@ -5,7 +5,6 @@ import MagicFormula
 app = Flask(__name__)
 
 route = {
-    'home': 'https://sanishshrestha.com',
     'open-ipo': '/open-ipo',
     'magic-formula': '/magic-formula'
 }
@@ -16,7 +15,7 @@ def notFound(e):
 
 @app.route("/")
 def home():
-    return redirect(route['home'])
+    return redirect(route['open-ipo'])
 
 @app.route(route['open-ipo'])
 def openIpo():
