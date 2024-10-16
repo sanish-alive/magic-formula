@@ -52,9 +52,8 @@ def magicFormula(companies):
 
     # Print the results
     for symbol, company in magic.items():
-        print(f"Symbol: {symbol}, P/E Ratio Rank: {company.get('P/E Ratio Rank')}::{magic[symbol]["P/E Ratio"]}, ROA Rank: {company.get('ROA Rank')}::{magic[symbol]["ROA"]}")
+        print(f"Symbol: {symbol}, P/E Ratio Rank: {company.get('P/E Ratio Rank')}::{magic[symbol]['P/E Ratio']}, ROA Rank: {company.get('ROA Rank')}::{magic[symbol]['ROA']}")
         magic[symbol].update({"Magic Formula Rank": company.get('P/E Ratio Rank')+company.get('ROA Rank')})
-
     return magic
 
 if __name__ == '__main__':
