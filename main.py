@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template
+from flask import Flask, redirect, request, render_template, url_for
 import webScraping
 import MagicFormula
 
@@ -15,7 +15,7 @@ def notFound(e):
 
 @app.route("/")
 def home():
-    return redirect(route['open-ipo'])
+    return redirect(url_for('openIpo'))
 
 @app.route(route['open-ipo'])
 def openIpo():
