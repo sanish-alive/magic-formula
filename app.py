@@ -5,8 +5,8 @@ import MagicFormula
 app = Flask(__name__)
 
 route = {
-    'open-ipo': '/openipo',
-    'magic-formula': '/magicformula'
+    'open-ipo': '/open-ipo',
+    'magic-formula': '/magic-formula'
 }
 
 @app.errorhandler(404)
